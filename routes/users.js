@@ -1,5 +1,5 @@
 import express from 'express';
-import User from '../models/Users.js'
+import User from '../models/User.js'
 
 const router = new express.Router();
 
@@ -74,14 +74,6 @@ router.delete("/:id", async (req, res) => {
  */
 router.put('/:id', async (req, res) => {
     try {
-
-        // const usernameTaken = await User.findOne({username: req.body.username});
-        // console.log(usernameTaken);
-
-        // if (usernameTaken) {
-        //     return res.send('username not available!');
-        // }
-
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.send(updatedUser);
     } catch (error) {

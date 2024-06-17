@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { commentSchema } from './comment';
+import { commentSchema } from './comments';
 
 const factDoc = {
     content: newFact, 

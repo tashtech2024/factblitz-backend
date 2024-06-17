@@ -21,22 +21,22 @@ const router = new express.Router();
             content: newFact, 
             user:newUser_id, 
             username: newUser.username,
-        });
+        }); console.log(fact);
         return res.json(fact);
         }
     });
 
     //* Get Facts
-    router.get("/", async (req, res) => {
+    router.get("/facts", async (req, res) => {
         const facts = await Fact.find();
         res.send(facts);
     });
 
-    router.delete("/", async (req, res) =>{
+    router.delete("/facts", async (req, res) =>{
         res.send("deleting fact.....");
     });
 
-    router.put("/", async (req, res) => {
+    router.put("/facts", async (req, res) => {
         res.send("updating fact....")
     });
 
