@@ -4,8 +4,11 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import UserRouter from "./routes/users.js";
 import authRouter from "./routes/auth.js";
+import commentRouter from "./routes/comment.js"
+import factsRouter from './routes/facts.js'
+
 import cors from "cors";
-import { commentSchema } from "./models/comments.js";
+import comments, {commentSchema } from "./models/comments.js";
 
 
 dotenv.config(); 
@@ -29,10 +32,10 @@ app.get('/', (req, res) => {
   res.send('Welcome to the User Auth API!');
 });
 app.use('/users', UserRouter);
-app.use('/facts', UserRouter);
-app.use('/comments', commentSchema);
+app.use('/facts', factsRouter);
 app.use('/auth', authRouter);
 
+app.use('/comments', commentRouter);
 //! Global Error middleware
 
 app.use((err, req, res, next) => {

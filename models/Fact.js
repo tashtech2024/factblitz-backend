@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
-import { commentSchema } from './comments';
+import { commentSchema } from './comments.js';
 
 const factDoc = {
-    content: newFact, 
+    content: "newFact", 
     username: "",
     likes: 400,
     factRepost: 50,
     timestamp: new Date(),
-    id: uuidv4(),
+    // id: uuidv4(), === NOT WORKING
 };
 
 const factSchema = new mongoose.Schema({
@@ -16,7 +16,7 @@ const factSchema = new mongoose.Schema({
         ref: 'User'
     },
     comments: [commentSchema], 
-    FavoriteFacts: [{fact, String}],
+    FavoriteFacts: [{fact: String}],
     content: {
         type: String, 
         required: true,

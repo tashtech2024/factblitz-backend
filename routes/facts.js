@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../models/User";
+import User from "../models/User.js"
 import Fact from "../models/Fact.js"
 
 const router = new express.Router();
@@ -19,6 +19,7 @@ const router = new express.Router();
 
         const fact = await Fact.Create({
             content: newFact, 
+            comment: '',
             user:newUser_id, 
             username: newUser.username,
         }); console.log(fact);
