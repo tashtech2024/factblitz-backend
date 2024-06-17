@@ -6,7 +6,7 @@ const router = new express.Router();
 
 //* Post Facts/
 
-router.post("/", async (req, res) => {
+    router.post("/", async (req, res) => {
     console.log(req.body);
     const {username, newFact} = req.body;
 

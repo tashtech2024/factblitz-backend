@@ -16,6 +16,7 @@ const factSchema = new mongoose.Schema({
         ref: 'User'
     },
     comments: [commentSchema], 
+    FavoriteFacts: [{fact, String}],
     content: {
         type: String, 
         required: true,
@@ -29,3 +30,5 @@ const factSchema = new mongoose.Schema({
         default: 0
     },
 }, {timestamps: true}); 
+
+export default mongoose.model('fact', factSchema);
