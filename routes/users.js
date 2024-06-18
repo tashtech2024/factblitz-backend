@@ -3,8 +3,8 @@ import User from '../models/User.js'
 
 const router = new express.Router();
 
-//** Get /users/ ====//
-//** Get all users====//
+//** Get /users/
+//** Get all users
 
 router.get('/', async (req, res) => {
     try {
@@ -74,6 +74,14 @@ router.delete("/:id", async (req, res) => {
  */
 router.put('/:id', async (req, res) => {
     try {
+
+        // const usernameTaken = await User.findOne({username: req.body.username});
+        // console.log(usernameTaken);
+
+        // if (usernameTaken) {
+        //     return res.send('username not available!');
+        // }
+
         const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
         res.send(updatedUser);
     } catch (error) {

@@ -6,9 +6,14 @@ const router = new express.Router();
 
 //* Post Facts/
 
-    router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
     console.log(req.body);
-    const {username, newFact} = req.body;
+    try {
+        const user = await User.create(req.body);
+        res.send(user);
+        // res.json(user).status(203);
+    } catch (error) {
+        console.log(error);
 
     //*Check if user exists
 
@@ -22,10 +27,12 @@ const router = new express.Router();
             comment: '',
             user:newUser_id, 
             username: newUser.username,
-        }); console.log(fact);
+        }); 
+        console.log(fact);
         return res.json(fact);
         }
-    });
+    }});
+
 
     //* Get Facts
     router.get("/facts", async (req, res) => {
