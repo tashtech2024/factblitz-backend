@@ -8,8 +8,6 @@ import commentRouter from "./routes/comment.js"
 import factsRouter from './routes/facts.js'
 
 import cors from "cors";
-import comments, {commentSchema } from "./models/comments.js";
-
 
 dotenv.config(); 
 
@@ -35,7 +33,8 @@ app.use('/users', UserRouter);
 app.use('/facts', factsRouter);
 app.use('/auth', authRouter);
 
-app.use('/comments', commentRouter);
+app.get('/comments', commentRouter);
+
 //! Global Error middleware
 
 app.use((err, req, res, next) => {

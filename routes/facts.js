@@ -4,6 +4,20 @@ import Fact from "../models/Fact.js"
 
 const router = new express.Router();
 
+//* Get Facts
+router.get("/facts", async (req, res) => {
+    const facts = await Fact.find();
+    res.send(facts);
+});
+
+router.delete("/facts", async (req, res) =>{
+    res.send("deleting fact.....");
+});
+
+router.put("/facts", async (req, res) => {
+    res.send("updating fact....")
+});
+
 //* Post Facts/
 
 router.post('/', async (req, res) => {
@@ -34,18 +48,5 @@ router.post('/', async (req, res) => {
     }});
 
 
-    //* Get Facts
-    router.get("/facts", async (req, res) => {
-        const facts = await Fact.find();
-        res.send(facts);
-    });
-
-    router.delete("/facts", async (req, res) =>{
-        res.send("deleting fact.....");
-    });
-
-    router.put("/facts", async (req, res) => {
-        res.send("updating fact....")
-    });
 
     export default router; 
